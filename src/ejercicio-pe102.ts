@@ -2,33 +2,123 @@
 import {ingredientType} from "./Ingredient"
 //import * as inquirer from 'inquirer';*/
 
-export class Menu {
-    name: string;
 
+/**
+ * Type que tiene el array que entra con el que operaremos y la función reduce()
+ */
+type Operation = {
+    arrayIn: number [];
+    reduce: () => void;
+}
+
+/**
+ * CLASS REDUCE
+ * @class Reduce es la padre que realizará la reducciones
+ */
+export abstract class Reduce {
+    protected array: Operation[]
     /**
-     * Contructor del Menú
-     * @param name nombre del menú
-     * @param menuPrice precio del menú
-     * @param dishes platos que componen el menú
-     * @function calculateMenuPrice() calcular precio del menu
+     * Contructor de la Reduce
      */
-    constructor(name: string = "") {
-        this.name = name;
+    constructor(protected num1: number,
+        protected num2: number) {
+            this.array = [];
     }
 
     /**
-     * @returns name, nombre del menu
+     * Getter que devuelve el valor acumulador
+     * @returns num1 que es acumulador
+     */ 
+    getNum1(){
+        return this.num1
+    }
+
+    /**
+     * Getter que devuelve el valor actual
+     * @returns num2 que es valor actual
+     */ 
+    getNum2(){
+        return this.num2
+    }
+
+    /**
+     * Método que irá reduciendo, cogiendo cada elemento del array
      */
-    getName(): string{
-        return this.name;
+    /*public reduce(){
+        this.arrayIn.forEach(element => {
+           this.arrayIn.push(element); 
+        });
+    }*/
+
+    /**
+     * Método de plantilla
+     */
+    protected run(){
+        this.evalValues();
     }
 
-   
-    /**
-     * Cambia el nombre del menú
-     * @param newName Nuevo nombre del menú
-    */
-    setName(newName: string): void {
-        this.name = newName;
+    protected evalValues(){
+        console.log('Template eval function');
+        this.arrayIn.forEach(element => {
+            element.reduce()
+        });
     }
+
+    protected abstract addReduce(): void;
+    protected abstract subReduce(): void;
+    protected abstract prodReduce(): void;
+    protected abstract divReduce(): void;
+    
+
+
+}
+class AddReduce extends Reduce {
+    /**
+     * Contructor de la AddReduce class
+     */
+    constructor(protected accum: number, protected current: number) {
+       
+    }
+    // Operación addReduce
+    protected addReduce(): void{
+
+    }
+
+}
+    
+
+class SubReduce extends Reduce {
+    
+
+    /**
+     * Método protegido que realiza la resta del reduce
+     * 
+     */
+    protected subReduce(){
+
+    }
+}
+
+class ProdReduce extends Reduce {
+    /**
+     /**
+     * Método protegido que realiza el producto del reduce
+     * 
+     */
+    protected prodReduce(){
+        
+    }
+}
+
+
+class DivReduce extends Reduce {
+    /**
+     /**
+     * Método protegido que realiza la división del reduce
+     * 
+     */
+    protected divReduce(){
+        
+    }
+
 }
