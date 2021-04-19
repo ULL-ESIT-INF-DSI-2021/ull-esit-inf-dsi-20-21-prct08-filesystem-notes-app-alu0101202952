@@ -1,24 +1,5 @@
-# Ficheros comprimidos
-*.zip
-*.rar
-*.7zip
-*.tar.*
-
-# Logs y ficheros temporales
-logs 
-tmp 
-*.log
-*.tmp
-*.swp
-
-# Distribucion
-dist
-public
-obj
-
-# Tests
-.nyc_output
-
-# Desarrollo
 node_modules
-components
+dist
+package-lock.json
+.nyc_output
+coverage

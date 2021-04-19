@@ -1,6 +1,7 @@
 import "mocha";
 import {expect} from 'chai';
-import {Menu} from '../src/ejercicio-pe102'
+//import {Menu} from '../src/index';
+import {Menu} from '../src/ejercicio-pe102';
 
 
 //let egg: Ingredient = new Ingredient("EGG", "SPAIN", "CARNES-HUEVOS-LEGUMBRES", {carbohydrates: 5, proteins: 50, lipids: 25}, 5);
