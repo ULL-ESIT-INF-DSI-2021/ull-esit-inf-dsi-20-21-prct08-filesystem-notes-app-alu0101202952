@@ -16,13 +16,13 @@ type Operation = {
  * @class Reduce es la padre que realizará la reducciones
  */
 export abstract class Reduce {
-    protected array: Operation[]
+    protected arrayAux: Operation[]
     /**
      * Contructor de la Reduce
      */
     constructor(protected num1: number,
         protected num2: number) {
-            this.array = [];
+            this.arrayAux = [];
     }
 
     /**
@@ -41,84 +41,91 @@ export abstract class Reduce {
         return this.num2
     }
 
-    /**
-     * Método que irá reduciendo, cogiendo cada elemento del array
-     */
-    /*public reduce(){
-        this.arrayIn.forEach(element => {
-           this.arrayIn.push(element); 
-        });
-    }*/
 
     /**
      * Método de plantilla
      */
     protected run(){
-        this.evalValues();
+        this.evalValuesBefore();
+        this.addReduce();
+        this.evalValuesAfter();
     }
 
-    protected evalValues(){
+    protected evalValuesBefore(){
         console.log('Template eval function');
-        this.arrayIn.forEach(element => {
-            element.reduce()
+        let aux: Operation[] = [];
+        this.arrayAux.forEach(element => {
+            aux.reduce(element, element, this.arrayAux.indexOf(element), this.arrayAux[]); /* valor actual, valor anterior, indice actual array que reduzco*/
         });
     }
 
+    /**
+     * Método abstraco que realiza la suma
+     */
     protected abstract addReduce(): void;
-    protected abstract subReduce(): void;
-    protected abstract prodReduce(): void;
-    protected abstract divReduce(): void;
+
+    /**
+     * Método que evalua el valor tras la reducción
+     */
+    protected evalValuesAfter(){
+
+    }
+    //protected abstract subReduce(): void;
+    //protected abstract prodReduce(): void;
+    //protected abstract divReduce(): void;
     
 
 
 }
-class AddReduce extends Reduce {
+export class AddReduce extends Reduce {
     /**
      * Contructor de la AddReduce class
      */
     constructor(protected accum: number, protected current: number) {
-       
+        super(accum, current);
     }
     // Operación addReduce
     protected addReduce(): void{
-
+        let result: Operation[] = [];
+        this.arrayAux.forEach(element => {
+            result.push(element);
+        });
     }
 
 }
     
-
-class SubReduce extends Reduce {
+/*
+export class SubReduce extends Reduce {
     
 
     /**
      * Método protegido que realiza la resta del reduce
      * 
-     */
+     *//*
     protected subReduce(){
 
     }
-}
+}*/
 
-class ProdReduce extends Reduce {
+/*export class ProdReduce extends Reduce {
     /**
      /**
      * Método protegido que realiza el producto del reduce
      * 
-     */
+     *//*
     protected prodReduce(){
         
     }
-}
+}*/
 
-
-class DivReduce extends Reduce {
-    /**
+/*
+export class DivReduce extends Reduce {
      /**
      * Método protegido que realiza la división del reduce
      * 
-     */
+     *//*
     protected divReduce(){
         
     }
 
-}
+}*/
