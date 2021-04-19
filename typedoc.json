@@ -1,5 +1,5 @@
 {
     "entryPoints": ["./src/ejercicio-pe102"
   ],
-    "out": "./docs/typedoc-ej3"
+    "out": "./docs/typedoc-ejercicio-pe102"
   }
