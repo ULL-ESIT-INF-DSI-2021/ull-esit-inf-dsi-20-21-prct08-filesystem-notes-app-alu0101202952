@@ -1,8 +1,8 @@
-import "mocha";
+/*import "mocha";
 import {expect} from 'chai';
 //import {Menu} from '../src/index';
 import {Reduce} from '../src/ejercicio-pe102';
-import {AddReduce} from '../src/ejercicio-pe102';
+import {AddReduce} from '../src/ejerciciope102/ejercicio-pe102';
 //import {SubReduce} from '../src/ejercicio-pe102';
 //import {ProdReduce} from '../src/ejercicio-pe102';
 //import {DivReduce} from '../src/ejercicio-pe102';
@@ -18,4 +18,4 @@ describe('Values initialization tests', () => {
     it('evalValue', () => 
         expect(val1()).to.be.equal();
     });
-});
+});*/

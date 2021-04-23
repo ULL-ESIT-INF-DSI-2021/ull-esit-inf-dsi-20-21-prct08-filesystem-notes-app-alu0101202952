@@ -1,11 +1,10 @@
-/*import {Dish} from "./Dish"
-import {ingredientType} from "./Ingredient"
-//import * as inquirer from 'inquirer';*/
+//more_patterns
 
 
 /**
  * Type que tiene el array que entra con el que operaremos y la función reduce()
  */
+/*
 type Operation = {
     arrayIn: number [];
     reduce: () => void;
@@ -14,38 +13,38 @@ type Operation = {
 /**
  * CLASS REDUCE
  * @class Reduce es la padre que realizará la reducciones
- */
+ *//*
 export abstract class Reduce {
     protected arrayAux: Operation[]
     /**
      * Contructor de la Reduce
-     */
+     *//*
     constructor(protected num1: number,
         protected num2: number) {
             this.arrayAux = [];
-    }
+    }*/
 
     /**
      * Getter que devuelve el valor acumulador
      * @returns num1 que es acumulador
-     */ 
+     */ /*
     getNum1(){
         return this.num1
-    }
+    }*/
 
     /**
      * Getter que devuelve el valor actual
      * @returns num2 que es valor actual
-     */ 
+     */ /*
     getNum2(){
         return this.num2
-    }
+    }*/
 
 
     /**
      * Método de plantilla
-     */
-    protected run(){
+     *//*
+    public run(){
         this.evalValuesBefore();
         this.addReduce();
         this.evalValuesAfter();
@@ -56,31 +55,18 @@ export abstract class Reduce {
         let aux: Operation[] = [];
         this.arrayAux.forEach(element => {
             aux.reduce(element, element, this.arrayAux.indexOf(element), this.arrayAux[]); /* valor actual, valor anterior, indice actual array que reduzco*/
-        });
+        /*});
     }
 
-    /**
-     * Método abstraco que realiza la suma
-     */
-    protected abstract addReduce(): void;
-
-    /**
-     * Método que evalua el valor tras la reducción
-     */
-    protected evalValuesAfter(){
-
-    }
-    //protected abstract subReduce(): void;
-    //protected abstract prodReduce(): void;
-    //protected abstract divReduce(): void;
-    
+  
 
 
-}
-export class AddReduce extends Reduce {
+}*/
+//export class AddReduce extends Reduce {
     /**
      * Contructor de la AddReduce class
      */
+    /*
     constructor(protected accum: number, protected current: number) {
         super(accum, current);
     }
@@ -92,7 +78,7 @@ export class AddReduce extends Reduce {
         });
     }
 
-}
+}*/
     
 /*
 export class SubReduce extends Reduce {
