@@ -1,5 +1,7 @@
 {
-  "entryPoints": ["./src/app"
+  "entryPoints": ["./src/userTodo",
+                  "./src/todoCollection",
+                  "./src/todoItem"
 ],
   "out": "./docs"
 }

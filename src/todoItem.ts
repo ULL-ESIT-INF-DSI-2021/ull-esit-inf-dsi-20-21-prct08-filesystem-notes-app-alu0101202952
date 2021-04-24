@@ -13,6 +13,7 @@ export class TodoItem {
         return this.task;
     }
 
+
     printDetails() : void {
         console.log(`${this.id} ${this.title}: ${this.complete
             ? "  (complete)": ""} \n Description: ${this.task} \n`);
