@@ -43,7 +43,7 @@ yargs.command({
       let userNotes = collection.loadTodo(argv.user);
       let color = collection.getTodoColor(argv.color);
       if (color) {
-        userNotes.push(new TodoItem(argv.user, argv.title, argv.body));
+        userNotes.push(new TodoItem(argv.user, argv.title, argv.body, argv.color));
         collection.saveTodo(userNotes, argv.user.toString());
       } else {
         console.log('Invalid color');

@@ -8,22 +8,22 @@ export class TodoCollection {
         todoItems.forEach(item => this.itemMap.set(item.id, item));
     }
 
-    setUsename(user: string){
+    setUsername(user: string){
         this.userName = user;
     }
 
-    getUsename(){
+    getUsername(){
         return this.userName;
     }
 
-    addTodo(title: string, task: string): number {
+    addTodo(title: string, task: string, color:string): number {
         if(this.itemMap.has(parseInt(title))){
             console.log(chalk.red(`Error, Tarea ya incluída`))
         } else{
             while (this.getTodoById(this.nextId)) {
                 this.nextId++;
             }
-            this.itemMap.set(this.nextId, new TodoItem(this.nextId, title, task));
+            this.itemMap.set(this.nextId, new TodoItem(this.nextId, title, task, color));
         }
         return this.nextId;
     }
@@ -34,7 +34,7 @@ export class TodoCollection {
 
     getTodoItems(title: string): TodoItem[] {
         return [...this.itemMap.values()]
-            .filter(item => title || !item.complete);
+            .filter(item => title || !item.getTask());
     }
 
     getTodoColor(color: string){
@@ -56,16 +56,9 @@ export class TodoCollection {
         }
     }
 
-    markComplete(id: number, complete: boolean) {
-        const todoItem = this.getTodoById(id);
-        if (todoItem) {
-            todoItem.complete = complete;
-        }
-    }
-
     removeComplete() {
         this.itemMap.forEach(item => {
-            if (item.complete) {
+            if (item.getTitle()) {
                 this.itemMap.delete(item.id);
             }
         })
@@ -83,7 +76,7 @@ export class TodoCollection {
             // String en formato JSON y lo convierte en un objeto
             let contentObject = JSON.parse(fileContent.toString());
             //Actua como un diccionario, leemos cada atributo y la información que tiene y la extraemos
-            tasks.push(new TodoItem(contentObject.title, contentObject.color, contentObject.text));
+            tasks.push(new TodoItem(contentObject.id, contentObject.title, contentObject.text, contentObject.color));
           }
         }
         return tasks;
