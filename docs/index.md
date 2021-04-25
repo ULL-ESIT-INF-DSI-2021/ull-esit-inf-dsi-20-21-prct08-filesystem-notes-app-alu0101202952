@@ -348,7 +348,7 @@ Y así puediendo almacenar varios ficheros y varios usuario como se ve a continu
 
 Demostrando así el corrector funcionamiento del comando add.
 
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
 - Yarg: command "modify"
@@ -366,13 +366,110 @@ Sería tan simple comoponer en el body el nuevo texto que quieres poner y él ya
 
 ![cod](https://i.imgur.com/XB43747.jpg)
 
-El problema es que no funciona del todo
+El problema es que no funciona del todo.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Yarg: command "remove"
+
+El objetivo de este es borrar la nota:
+
+![yarg remove](https://i.imgur.com/q70UbBm.jpg)
+
+El comando sería:
+
+> `tsc
+> node dist/userTodo.js remove --user=1 --title="blueblue"`
+
+Mostrando:
+
+![cod remove](https://i.imgur.com/nbRpZkA.jpg)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Yarg: command "list"
+
+El objetivo de este es listar todas las notas de ese usuario:
+
+![yarg list](https://i.imgur.com/R9ZYWce.jpg)
+
+El comando sería:
+
+> `tsc
+> node dist/userTodo.js remove --user=1 --title="blueblue"`
+
+
+Dando:
+
+![list cod](https://i.imgur.com/SUesgXU.jpg)
+
+Dando un error pues se deberían de mostrar de color las notas.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Yarg: command "read
+
+El objetivo de este es leer una nota específica de ese usuario:
+
+![yarg read](https://i.imgur.com/OifmKh3.jpg)
+
+El comando sería:
+
+> `tsc
+> node dist/userTodo.js remove --user=1 --title="blueblue"`
+
+
+Dando:
+![yarg code read](https://i.imgur.com/j84uvtY.jpg)
+
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
+ 
+▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
 
 
+## GITHUB ACTIONS: WORKFLOWS, COVERALLS
+
+En esta parte tenemos que hacer momentáneamente el repositorio público en github para poder engancharlo con GitHub Actions y Coveralls y así hacer el seguimiento continuo de github Actions y luego el de coveralls quedando:
+
+Un cubrimiento de:
+
+![cubrimiento](https://i.imgur.com/67H6XU1.jpg)
+
+Copiando el token de coveralls por una parte en un fichero **.coveralls.yml**:
+
+![token](https://i.imgur.com/JAAj8av.jpg)
+
+Luego realizaríamos el seguimiento continuo por GitHub Actions creando un propio workflows para coveralls:
+
+![coveralls workflow](https://i.imgur.com/SCmuLXh.jpg)
+
+
+Y se vería el cubrimiento de coveralls dicho workflow en github action:
+
+![actions coveralls](https://i.imgur.com/hfIJ15z.jpg)
+
+Y se documenta en el fichero **README.md** los badges de GithubActions, Coveralls y SonarCloud respectivamente:
+
+![seguimeitno]()
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+ 
+▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+
+## SONARCLOUD: BADGES
+
+Se accede a la web de SonarCloud, buscamos el repositorio respectivo y se accede a él y copiaríamos el badge de **markdown** que isnertamos en el README.md como antes vimos.
+
+![sonar](https://i.imgur.com/w3aZqch.jpg)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -397,12 +494,12 @@ Y así finalizamos esta práctica e informe redactado en el archivo **index.md**
 ## CONCLUSIONES
 
 
-Conclusión sobre la práctica e informe, aquí plantearé la dinámica de la práctica y posibles dudas que me hayan surgido y solucionado. La práctica en sí hubieron ejercicios donde tuve dificultad donde acudí a la tutoría, pero hubieron ejercicios algo complejos de realizar si no usaba expresiones regulares. Estas me han beneficiado bastante a la hora de resolverlos y/o plantearlos. Por otro lado, la herramienta typedoc no me ha causado problemas y he sabido desenvolverme con ella. En cambio, otra uso y herramientas opcionales que quise empezar a usar como son: **Mocha** y **Chai**, me han causado dificultad. Sé que no eran obligatorias pero quise hacer esta práctica con esas herramientas y me ha saltado un error en la instalación que tendré que consultar con el profesor. Por último, el informe pues ya en la práctica 1, me familiaricé con la herramienta de GitHub Pages y ha sido sencillo.
+Conclusión sobre la práctica e informe, aquí plantearé la dinámica de la práctica y posibles dudas que me hayan surgido y solucionado. La práctica en sí hubieron partes del código, métodos en concreto que me dificultaron a la hora de mostrar el resultado como quise, resulta una práctica intuitiva y útil en caso de querer tener una gestión simple de notas y yo he enfocado esta práctica a una idea de una aplicación de organización de tareas, como una agenda, y un problema que resultó al hacer público el repo para engancharlo al sonar cloud fue porque no se mostraba el workflow de sonar cloud para proceder a hacerlo y básicamente esa parte sé como hacerlo pero no se muestra. Por el resto no he tenido dudas y con lo de sonarcloud pediré tutoría o usaré Github Issues.
 
 ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
 
 ## BIBLIOGRAFÍA Y/O WEBGRAFÍA
 
 
-- [Enunciado práctica](https://ull-esit-inf-dsi-2021.github.io/prct06-generics-solid/)
-- [Informe documentación con Typedoc](http://127.0.0.1:5500/docs/modules/ejercicio_2_isconvertible.html)
+- [Enunciado práctica](https://ull-esit-inf-dsi-2021.github.io/prct08-filesystem-notes-app/)
+- [Informe documentación con Typedoc](http://127.0.0.1:5500/docs/index.html)
