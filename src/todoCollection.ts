@@ -1,6 +1,11 @@
 import { join } from "path"; 
 import { TodoItem } from "./todoItem";
 const chalk = require('chalk');
+
+/**
+ * Class TodoCollection
+ * @class TodoCollection almacena todas las notas de cada usuario
+ */
 export class TodoCollection {
     private nextId: number = 1;
     private itemMap = new Map<number, TodoItem>();
@@ -8,14 +13,29 @@ export class TodoCollection {
         todoItems.forEach(item => this.itemMap.set(item.id, item));
     }
 
+    /**
+     * setUsername del usuario de la nota
+     * @returns cambia el nombre del usuario de la nota
+     */
     setUsername(user: string){
         this.userName = user;
     }
 
+    /**
+     * getUsername del usuario de la nota
+     * @returns retorna el nombre del usuario de la nota
+     */
     getUsername(){
         return this.userName;
     }
 
+    /**
+     * Method addTodo añade una nota
+     * @param title de la nota
+     * @param task cuerpo de la nota
+     * @param color color de la nota
+     * @returns la nota añadida
+     */
     addTodo(title: string, task: string, color:string): number {
         if(this.itemMap.has(parseInt(title))){
             console.log(chalk.red(`Error, Tarea ya incluída`))
