@@ -455,7 +455,7 @@ Y se vería el cubrimiento de coveralls dicho workflow en github action:
 
 Y se documenta en el fichero **README.md** los badges de GithubActions, Coveralls y SonarCloud respectivamente:
 
-![seguimeitno]()
+![seguimeitno](https://i.imgur.com/x5h0Day.jpg)
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
