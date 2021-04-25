@@ -29,7 +29,6 @@
   - Instalación, configuración Mocha y Chai
   - Instalación, configuración Coverage, Instanbul, Coveralls
   - Instalación dependencias yargs y chalk
-  - Pruebas Unitarias estructura
   - Estructura programa 
     -   Prueba Unitaria
     -   Desarrollo del código
@@ -49,10 +48,10 @@
 ## OBJETIVOS
 
 
-Los objetivos en esta práctica tendremos que resolver una serie de ejercicios de programación que nos permitirán conocer más en profundidad las clases e interfaces genéricas del lenguaje TypeScript. Además, también deberán utilizar los principios SOLID de diseño orientado a objetos. Además nos iniciaremos con los conceptos de Instanbul y Coveralls.
+En esta práctica, tendrá que implementar una aplicación de procesamiento de notas de texto. En concreto, la misma permitirá añadir, modificar, eliminar, listar y leer notas de un usuario concreto. Las notas se almacenarán como ficheros JSON en el sistema de ficheros de la máquina que ejecute la aplicación. Además, solo se podrá interactuar con la aplicación desde la línea de comandos. Nos iniciaremos con la herramienta yargs y chalk para ello
 
 - **ENLACE A LA DOCUMENTACIÓN EN TYPEDOC**
-> - [Informe documentación con Typedoc](http://127.0.0.1:5500/docs/modules/ejercicio_2_isconvertible.html)
+> - [Informe documentación con Typedoc](http://127.0.0.1:5500/docs/index.html)
 
 
 
@@ -64,7 +63,7 @@ Los objetivos en esta práctica tendremos que resolver una serie de ejercicios d
 
 Antes de comenzar se nos requiere que aceptemos la tarea asignada en el GitHub Classroom:
 
-![Asignación GitHub Classroom](https://i.imgur.com/ciw11DY.jpg)
+![Asignación GitHub Classroom](https://i.imgur.com/R51p0mE.jpg)
 
 Con ello ya podríamos trabajar en esta práctica.
 
@@ -78,49 +77,33 @@ Con ello ya podríamos trabajar en esta práctica.
 
 Lo primero sería estructurar el workspace de nuestra práctica, primero clonaremos el repositorio y lo iremos estructurando:
 
-![Clonado](https://i.imgur.com/D7Bu2t1.jpg)
+Se comienza modificando el **package.json** y creando el fichero de configuración **tsconfig.json** como se ha visto en prácticas anteriores.
 
-Comenzamos modificando el **package.json** con el comando `npm init --yes` y creamos de forma automática el fichero de configuración **tsconfig.json** eso lo haremos con el comando `tsc --init` y se crearía el tsconfig.json por defecto, nosotros lo modificaremos algo más para poder trabajar correctamente, necesitaremos poner la opción **exclude []** dentro del tsconfig.json para indicarle al compilador los directorios que exluiría a la hora de compilar explícitamente quedando:
+Se quedaría el **package.json** tal que:
 
-![tsconfig.json](https://i.imgur.com/xOpDPVB.jpg)
+![packagejson](https://i.imgur.com/EwYa3A3.jpg)
 
-Esos 3 directorios los exluiríamos a la hora de hacer `npm start` y no fallar a la hora de compilar los tests o los node-modules.
-
-Para ello creo el directorio donde empezaremos a estructurar los directorios y ejercicios, además de configurar el **package.json**, quedando el package.json tal que:
-
-![package.json](https://i.imgur.com/uWD4cGX.jpg)
-
-También necesitamos crear a partir de este el **tsconfig.json** con la ruta de localización de los ejercicios.ts, en el directorio `./src` y sus ejecutables .js en el directorio `./dist`, como hemos hecho en otras prácticas:
+Se crean el directorio `./src` y sus ejecutables .js en el directorio `./dist`, como hemos hecho en otras prácticas.
 
 Manualmente, se crearía ambos directorios donde trabajaremos. 
 
-También necesitaremos una compilación con control automático de cambios que instalaremos con el comando `npm install --save-dev tsc-watch`, tal que:
-
-![Compilacion control de cambios automáticos](https://i.imgur.com/hknZngX.jpg)
-
-Además añadiremos la configuración al **package.json**
-
-![Configuracion package tswatch](https://i.imgur.com/QQ2ctWn.jpg)
+También se necesita una compilación con control automático de cambios que se instalará con el comando `npm install --save-dev tsc-watch`
 
 Por último en la organización de la estructura básica será la instalación del paquete **EsLint**, esto por si quisiéramos comprobar la sintaxis de nuestro código, encontrar y solucionar problemas en el mismo. Primero lo instalamos con el comando:
 
 > `npm install -g eslint` 
 
-![Instalación esLint](https://i.imgur.com/LBI0D9U.jpg)
-
 Y lo inicializamos con `eslint --init` añadiéndole esto valores:
 
 ![Configuración Eslint](https://i.imgur.com/Xp8pzj7.jpg)
 
-Luego modificar el fichero .eslint que se crea con las reglas correspondientes, quedando:
-
-![Esdlint configuracion fichero](https://i.imgur.com/Cf2bjc6.jpg)
+Luego modificar el fichero .eslint.
 
 Además crearemos el fichero .gitignore donde excluiremos los siguientes directorios: 
 
 ![gitignore](https://i.imgur.com/DzHhrEB.jpg)
 
-Tras la estructura básica nos dedicaremos a trabajar en el directorio `./src` donde alojaremos los ficheros correspondientes a los ejercicios que se nos plantea en esta práctica, además de preparar la documentación con typedoc y las pruebas unitarias (TDD) con Mocha y Chai.
+Tras la estructura básica se trabajará en el directorio `./src` donde se alojan los .ts correspondientes a cada clase que se me he planteado para la correcta organización del código de nodas de node.js manteniendo así los principios SOLID, además de preparar la documentación con typedoc y las pruebas unitarias (TDD) con Mocha y Chai.
 
 
 
@@ -131,29 +114,13 @@ Tras la estructura básica nos dedicaremos a trabajar en el directorio `./src` d
 
 Para conocer más sobre esta herramienta consultar [Typedoc](https://typedoc.org/). Como ya desde la práctica 3 nos habíamos introducido a la herramienta **Typedoc**, solo queda seguir los mismos pasos mecánicos para esta práctica. Dicho informe creado en Typedoc hecho con los comentarios de los ejercicios de esta práctica se aloja en:
 
-[Informe Typedoc Práctica 6](http://127.0.0.1:5500/docs/modules/ejercicio_2_isconvertible.html) 
+[Informe Typedoc Práctica 8](http://127.0.0.1:5500/docs/index.html) 
 
 O también mirando en los apartados **Objetivos** y **Bibliografía/ webgrafía** de este informe.
 
-Comenzamos con la instalación de typedoc:
-
-![Instalación typedoc](https://i.imgur.com/ySLfsAY.jpg)
-
+Comenzamos con la instalación de typedoc.
 
 Con ello podemos ver que se ha creado un directorio, que es como organizará typedoc la documentación que es por módulos, creando así `./node_modules`. Continuaremos con la configuración para poder usar Typedoc, primero si no se ha creado por defecto crear el **typedoc.json**, lo creamos y le añadimos la ruta de los ficheros a los que haremos el seguimiento de documentación. Y en el apartado `"out: "` pondremos el directorio donde se alojará toda esa documentación. Tras guardar dicha configuración se genereará automáticamente el directorio `./doc`.
-
-![typedoc.json](https://i.imgur.com/fh6jMZo.jpg)
-
-Para poder usar la herramienta necesitamos invocarla con un comando, dicho comando será: `npm run [nombre_invocación]`, el nombre de invocación es lo siguiente que configuraremos en el **package.json**, para ello pondremos en la parte de scripts del fichero:
-
-> `"doc": "typedoc"`
-
-- **doc**: será el nombre con el que ejecutaremos la herramienta
-- **typedoc**: la herramienta que lleva la documentación de la práctica
-
-Esto quedaría tal que:
-
-![Typedoc configuracion package.json](https://i.imgur.com/tuQoXyb.jpg)
 
 
 Ya tendríamos la documentación en el directorio `./doc` para ejecutarla serviría con el comando ´npm run doc´ como antes especificamos. 
@@ -172,37 +139,22 @@ Finalizando así la documentación con Typedoc.
 
 
 
-
 ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
 
 
 ## INSTALACIÓN. CONFIGURACIÓN MOCHA Y CHAI
 
-En este apartado como ya hemos anteriormentem, tendremos que volver a ejecutar dichos pasos para poder trabajar con Pruebas Unitarias con las herramientas **Mocha** y **Chai**. Primero instalaremos las dependencias y paquetes de Mocha y chai. Para ello ejecutaremos:
+En este apartado como ya hemos anteriormentem, tendremos que volver a ejecutar dichos pasos para poder trabajar con Pruebas Unitarias con las herramientas **Mocha** y **Chai**. Primero instalaremos las dependencias y paquetes de Mocha y chai. 
 
-![Instalación Mocha y Chai](https://i.imgur.com/YJgCv9g.jpg)
-
-A continuación con el comando `touch .mocharc.json` crearemos el fichero de configuración de la herramienta Mocha, este irá en la raíz de el proyecto y nos indicará utilidades para hacer TDD, es decir las pruebas unitarias. Para ello le indicaremos que las pruebas unitaras se alojarán en el directorio **./tests** y tendrán una terminología de **.spec.ts**. Esto quedaría:
-
-![configuración .mocharc.json](https://i.imgur.com/zwBQ19e.jpg)
-
-Ya tendremos una configuración básica de la herramienta, pero necesito crear el directorio **./tests** y los ficheros que tendrán las pruebas unitarias de los 3 ejercicios que se nos plantean, tendrá una estructura > `ejercicio-n.spec.ts`, siendo n = [1-3], con la enumeración de cada ejercicio:
-
-![Crear spec](https://i.imgur.com/GSKmTke.jpg)
+A continuación con el comando `touch .mocharc.json` crearemos el fichero de configuración de la herramienta Mocha, este irá en la raíz de el proyecto y nos indicará utilidades para hacer TDD, es decir las pruebas unitarias. Para ello le indicaremos que las pruebas unitaras se alojarán en el directorio **./tests** y tendrán una terminología de **.spec.ts**. 
 
 Como ha pasado con la herramienta **Typedoc** indicaremos en el **package.json** con qué comando, ejecutaremos la herramienta de mocha. Esta herramienta se ejecuta tal que `npm run [nombre_de_invocación]`, el nombre de invocación en nuestro caso será **test**, quedando el comando completo para ejecutar las pruebas unitarias de la forma: 
 
 > `npm run test`
 
-Este nombre de invocación es el que configuraremos en el package.json, quedando:
+Este nombre de invocación es el que configuraremos en el package.json
+Finalizando con todo esto la configuración de las herramientas necesarias para ejecutar los ejercicios mediante TDD. Quedando la estructura final con los ficheros además del .nojekyll.
 
-![mocha en package.json](https://i.imgur.com/u12sCYM.jpg)
-
-Finalizando con todo esto la configuración de las herramientas necesarias para ejecutar los ejercicios mediante TDD. Quedando la estructura final con los ficheros además del .nojekyll, los cuales no se nombraron pero porque se dan por hechos, como:
-
-![Estructura final proyecto con](https://i.imgur.com/z2rKKPl.jpg)
-
-Pero no acabaríamos con esto ya que añadimos unas nuevas variantes y son informe de seguimiento con la herramienta **Instanbul** y **Coveralls**.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -214,215 +166,217 @@ Pero no acabaríamos con esto ya que añadimos unas nuevas variantes y son infor
 
 ## INSTALACIÓN, CONFIGURACIÓN COVERAGE, INSTANBUL, COVERALLS
 
-Comenzaremos instalando los paquetes y dependencias de las herramientas asociadas a Instanbul, como es **nyc** y la de **coveralls**, tal que:
+Comenzaremos instalando los paquetes y dependencias de las herramientas asociadas a Instanbul, como es **nyc** y la de **coveralls**, como se han visto en prácticas anteriores y se enlazará el repositorio, tras hacerlo **público** a coveralls. Se copia el token del repo en un fichero creado .coveralls.yml, tal que:
 
-![Instalación nyc y coveralls](https://i.imgur.com/m1kcZvf.jpg)
-
-Luego pasaremos al **package.json** para configurar la herramienta primero de **nyc**:
-
-![Configuracion nyc package.json](https://i.imgur.com/mWvYUnk.jpg)
-
-Como se especificó en el package.json se ejecuta el informe de seguimiento con nyc con el comando `npm run coverage`:
-
-![Comando ejecucion](https://i.imgur.com/DMnYAvO.jpg)
-
-Mostrando por terminal en un comienzo un informe de seguimiento, en mi caso vacío, tal que:
-
-![Informe seguimiento vacío](https://i.imgur.com/9xoR2Jl.jpg)
-
-Tras esto pasaremos a configurar la herramienta de Coveralls, primero tendremos que acceder a la página de Coveralls e iniciar sesión:
-
-![Iniciar sesion coveralls](https://i.imgur.com/LVbymJY.jpg).
-
-Como queremos preparar un informe de seguimiento con esta herramienta necesitamos especificar el repositorio de Github al que se le hará. Primero se ha de cambiar la visibilidad del repositorio para hacerlo _público_ y así Coveralls lo reconozca. Y así luego habilitar el repositorio, añadiéndolo con **ON**:
-
-![Añadir repo](https://i.imgur.com/hGXEjff.jpg)
-
-Luego copiaremos un link que se genera con coveralls asociado a dicho repo y necesitaremos copiar para añadir a la estructura de nuestro repositorio:
-
-![lin coveralls](https://i.imgur.com/aaQWNQO.jpg)
-
-Tras ello pasaríamos a la raíz de nuestro repositorio y crearemos el fichero > `.coveralls.yml`:
-
-![crear fichero .coveralls.yml](https://i.imgur.com/a41IKsN.jpg)
-
-A continuación abrimos dicho fichero y pegaríamos el link que nos genera la herramienta coveralls y anteriormente habíamos copiado:
-
-![configuración fichero .coveralls.yml](https://i.imgur.com/QXKZlCV.jpg)
-
-Luego pasaríamos al package.json donde modificaríamos la línea de comando donde habíamos configurado con nyc para seguir el reporte del informe de seguimiento con coveralls y posterior el borrado del directorio que genera nyc:
-
-![configuracion package coveralls](https://i.imgur.com/Yj6xYwt.jpg)
-
-Y para guardar cambios y ver como ha cambiado volvemos a ejecutar el seguimiento, seguirá vacío hasta que añada algo de código con el que trabajar, lo cual mostraré más adelante.
-
-![volver ejecutar informe](https://i.imgur.com/GFeLL0Z.jpg)
-
-Si añadiéramos código, volviéramos a ejecutar el coverage, luego fuéramos a la página de coveralls tendríamos que ir al apartad **Badge** del repo que se genera para copiar el markdown generado y pegarlo en el README.md:
-
-![badge](https://i.imgur.com/zW7ba2c.jpg)
-
-Finalmente al generar la documentación con `npm run doc` y Abrirlo con **Live Server** se mostraría el badge que antes henos guardado en el README.md.
-
-Por último la estructura final y definitiva que tendría mi repositorio sería:
-
-![Estructura final](https://i.imgur.com/b1Vn4cW.jpg)
+![token](https://i.imgur.com/UfSW88y.jpg)
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 
-### EJERCICIO 2
+▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
 
-La idea para implementar los principios **SOLID** es clasificar mi código en 5 zonas bien distinguidas
-- La zona de los enums: Esta zona está al principio del código y muestra los tipos de datos, el tiempo, volumen, masa, etc. con los que trabajaremos
-- La zona de la interfaz genérica: Esta zona está situada después de la de los enum donde está definida los métodos que usará dicha interfaz y la clase genérica abstracta usará a su vez para implementar dichos métodos. ESTO cumple con los principios: _Single Responsability_ y _Open-Closed_.
-- La zona de las clase genérica abstracta **MagnitudeConvert**: esta clase genérica abstracta se encargará de las conversiones según la medida que se le imponga, tendrá tantos métodos public como unidades haya, volumen, fuerza, longitud, tiempo, masa... Y así trabajar con cada medida asociándole el tipo, es decir, el anum que le corresponde. Esto se explicará más adelante en detalle.
-- La zona de las clases de cada medida: A cada medida, volumen, fuerza, masa... se le asocia una clase que hereda con restricción sobre qué tipo usarán, es decir los enums: VUnits(VolumeUnits), TUnits(TimeUnits)... Esta cogerán de la clase genérica un método abstracto que se llama print y mostrarán por pantalla el correcpondiente mensaje a la conversión de su medida.
-- La zona de la clase genérica MagnitudeCollection: esta zona es la última con la que cierro el código y en la que defino como genérica pues en ella se guardarían las distintas magnitudes o medidas, volumen, fuerza...
+## INSTALACIÓN DEPENDENCIAS YARGS Y CHALK
 
-#### PASOS QUE REALICÉ EN MI DESARROLLO DE CÓDIGO
+Para plantear el ejercicio se necesita de dos herramientas para poder trabajar según lo estipulado, estas son **yargs** y **chalk**. Con yarg lo que se manejará es el tratado de comandos por línea de consola lso cuales están enfocados en esta práctica de node.js porque el usuario ha de poder añadir, modificar, borrar, lista y leer unas notas que se guardarán en un directorio correspondiente al usuario, por tanto cada usuario tendrá su propio directorio. Y con la herramienta chalk manejaremos los colores de los mensajes informativos y de las notas del usuario. Por ello primero debemos instalar las dependencias de yargs, tal que:
 
-Durante todo mi código me he basado en TDD, es decir mi **modus operandi** ha sido:
+![yargs install](https://i.imgur.com/tMFOb9j.jpg)
 
-1) Realizaba una expectativa o test con la idea de lo que quiero que me muestre a partir de objetos que instanciaba de las clases con los parámetros **amount** que contiene el valr numérico con el que se operaría y **unit** el tipo de medida que quiero pasar a la medida del sistema internacional.
+Y las de chalk:
 
-![codigo test fallo](https://i.imgur.com/iOnCue7.jpg)
-
-2) Ejecutaba `npm run test` y fallaba porque obviamente el método no funcionaba. Las pruebas unitarias que realicé fueron hacia los getters de amount y units, además del método print de cada clase y el método que mostraba la correcta conversión de tipos con el resultado en la medida del sistema internacional
-
-![fallo](https://i.imgur.com/A9fPEnz.jpg)
-
-3) Guardaba el fallo y con `git push --all` lo subía al repositorio.
-
-4) Luego desarrollaba el código correspondiente, de la interfaz, la clase genérica de la conversión **MagnitudeConvert** y la clase específica que heredaban de MagnitudeConvert, además de MagnitudeCollection:
-
-**INTERFAZ GENÉRICA 1ª IMPLEMENTACIÓN**
-
-![desarrollo](https://i.imgur.com/SRaBTvi.jpg)
+![chalk isntall](https://i.imgur.com/TrUgR9p.jpg)
 
 
-**CLASE ABSTRACTA GENÉRICA MAGNITUDECONVERT 1ª IMPLEMENTACIÓN**
-
-![desarrollo2](https://i.imgur.com/WhX300X.jpg)
-
-
-**CLASE QUE EXTIENDE DE LA CLASE GENÉRICA ABSTRACTA Y TIENE UNA RESTRICCIÓN DE TIPO 1ª* IMPLEMENTACIÓN**
-
-![desarrollo3](https://i.imgur.com/uSEC8HR.jpg)
-
-
-**CLASE MAGNITUDECOLLECTION GENÉRICA 1ª IMPLEMENTACIÓN**
-
-![desarrollo5](https://i.imgur.com/Ja7MuUE.jpg)
-
-
-5) Tras desarrollarlo volvi a ejecutar `npm run test` y dio acierto mostrandolo:
-
-![acierto](https://i.imgur.com/TrEDIU2.jpg)
-
-6) Con ello hacía git commit y subía con git push los reportes del acierto al repositorio.
-
-Estos pasos los he estado desarrollando durante todo el código. Como especifiqué antes primero para los getters y el método print de la clase MagnitudeSpeed, con la que quise comenzar a desarrollarlo. Luego con su método de conversión al definir la conversión en la clase genérica **MagnitudeConvert**, y así con cada y una de las clases asociadas a una medida.
-
-Por ejemplo para el método print de esta clase fue:
-
-1) Desarrollé el test
-
-![print 1](https://i.imgur.com/mSnMHSW.jpg)
-
-2) Falló, git commit y git push
-
-![print2](https://i.imgur.com/4kGQLz7.jpg)
-
-3) Desarrollé el código
-
-![print3](https://i.imgur.com/Q1opGkP.jpg)
-
-
-4) Acertó, git commit y git push
-
-![print4](https://i.imgur.com/7PhmxBq.jpg)
-
-Pero claro, quería que el método print imprimiese por pantalla la conversión entonces hice luego una expectativa para convertir, y repetí los pasos anteriores para ver si convertia cualquier unidad, primero probé con minutos a segundos y luego con otra unidad de tiempo a segundos quedando en orden como:
-
-![fallo expect](https://i.imgur.com/xTbFpeD.jpg)
+A continuación a medida que presente el código iré explicando el cómo hago uso de dichas herramientas.
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-![desarrollo interface](https://i.imgur.com/yqSqqcG.jpg)
+
+▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+
+## ESTRUCTURA DEL PROGRAMA
+
+La idea del programa es clasificar en tres ficheros .ts las dos clases que manejarán las notas: **class TodoItem** y la colección de notas: **class TodoCollection** y otro fichero manejará la herramienta yargs que permitirá a todos los usuarios que quieran, pero sin ser simultáneamente crear las notas, modificarlas, etc. que dicho fichero se llama **userTodo.ts**. Mostraré a continuación detalladamente cada fichero y la imprementación de cada método:
+
+Esta es la estructura final del repositorio:
+
+![estructura repo](https://i.imgur.com/DltNqIs.jpg)
+
+Estructura de los ficheros y pruebas unitarias:
+
+![test y codigo](https://i.imgur.com/s1ebXso.jpg)
+
+Ante todo se ha tenido en cuenta el desarrollo de pruebas unitarias mediante TDD, lo cual se ha hecho primero las expectativas y luego el código, dando al final un resultado de Cubrimiento de:
+
+![cubrimiento](https://i.imgur.com/67H6XU1.jpg)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### Fichero: todoItem.ts
+
+El objetivo de este fichero es el manejo individual de los atributos que tiene las notas de cada usuario.
+Para ello se quiso manejar en las expectativas los atributos esenciales de las notas, las cuales contienen setters y getters. Por ello primero se realizaron las pruebas correspondientes:
+
+![test1](https://i.imgur.com/B4BGYK6.jpg)
+
+Y con la idea de las pruebas a realizar se comenzó a desarrollar la clase que define cómo son los atributos que contiene una nota:
+
+![codigo 1](https://i.imgur.com/B2NjlWS.jpg)
+
+Cabe a mencionar que lo distinto es cómo quiero imprimir una nota individualmente y por ello implementé un método print de la clase que lo imprimiese como se deseaba:
+
+![print todoitem](https://i.imgur.com/2Qbqnod.jpg)
+
+Finalizando así la clase **TodoItem** con el manejo de los atributos de las notas
+
+![expect final todoitem](https://i.imgur.com/woNR0PQ.jpg)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### Fichero: todoCollection.ts
+
+El objetivo de este fichero es manejar la carga, guarda, añadido, eliminado y agrupación de la colección de notas que puede tener un usuario, es en este fichero donde además se establece la creación de una carpeta para cada usuario y si el usuario existe no crear más, sólo una y almacenar en dicho directorio cada nota. Para ello se realizaron las siguientes pruebas:
+
+Las presentaré y explicaré por partes, puesto que mi obejtivo inicial es que los usuarios en vez de ser string pues tuvieran un número identificador con el que diferenciarlos pues me pareció más útil y manejable para otros caso:
+
+- Parte 1 tests:
+
+![pruebas1](https://i.imgur.com/qIBQf6C.jpg)
+
+Las primeras espectativas se basó en el reconocimiento del usuario mediante getter y setter, además de la agrupación de las notas mediante los métodos **getTodoById** que me devuelve la nota para ese identificador o usuario, **getTodoItems**, la agrupación de todas las notas y **getTodoColor** devolver el color de la nota haciendo las pruebas unitarias sobre la herramienta chalk como se muestra.
+
+
+- Parte 2 tests:
+
+![pruebas 2](https://i.imgur.com/KH7SmzT.jpg)
+
+En esta segunda parte muestro el tratamiento de las notas mediante los siguientes métodos: **addTodo**, **removeComplete**, **loadTodo** y **saveTodo**. Primera prueba se esperó crear una nueva nota y borrarla a continuación usando así los dos primero métodos antes nombrados. Luego el objetivo era la carga y guarda respectivamente de la nota a modo de crear así la nota y guardarla en un directorio particular y luego poder cargar de el la nota o notas.
+
+Pasaríamos con ello luego a la creación respectivamente del código basándonos en las pruebas unitarias antes nombradas, **NOTA**: > hay que destacar que no se realizaron todas estas pruebas y luego el código sino que a cada método se le hizo por parte su prueba y su código, escalando progresivamente en el desarrollo del programa.
+
+Entonces el código quedaría mostrado por partes:
+
+- Parte 1 código:
+
+![p1codigo](https://i.imgur.com/RHAGnTS.jpg)
+
+En esta primera parte muestro como se contruiría esta colección de notas que vendría por un usuario y un TodoItem[] con las notas, esto manejándolo en un mapa donde será más manejable a la hora de acceder. Además localizamos el getter y setter del numero identificativo del usuario.
+
+- Parte 2 código:
+
+![p2codigo](https://i.imgur.com/rimP0Mh.jpg)
+
+En esta segunda parte se muestra el método **addTodo** y este método es donde por priemra vez se usa una nota informativa de error con la herramienta **chalk**. Como se nos indicó, tenemos que con chalk manejar mensajes informativos, en verde con mensajes de información y en rojo con mensaje de error. En este caso uno de error que saltaría ante el caso de que ya se encuentre una nota con un título determinado. De resto lo que haría el método es recoger un nuevo título, contexto y color de la nota y añadirlos al usuario con ide correspondiente a nuestro mapa que contiene las otras notas que posee el usuario con dicha identificación.
+
+- Parte 3 código:
+
+![p3codigo](https://i.imgur.com/F51fpPW.jpg)
+
+En esta parte tercer del código muestro los métodos **getTodoById** que me devuelve la nota para ese identificador o usuario, **getTodoItems**, la agrupación de todas las notas de ese usario y **getTodoColor** devolver el color de la nota usando un switch que permuta según el color de la nota con el correspondiente en chalk. Estas nos será de ayuda más adelante con el tratamiento de las notas.
+
+
+- Parte 4 código:
+
+![p4codigo](https://i.imgur.com/TAcCtXT.jpg)
+
+Esta cuarta parte trataría de borrar dichas notas que se desease mediante el método **removeComplete**
+
+
+- Parte 5 código:
+
+![p5codigo](https://i.imgur.com/469eG22.jpg)
+
+En esta última parte de la clase TodoCollection se encuentran los métodos más importantes para la carga y almacenamiento de las distintas notas, estos son **loadTodo** y **saveTodo**, estos métodos se encargarán de hacer la redirección y almacenamiento de las notas según se nos pide. Comienzo explicando **loadTodo**.
+
+Este método carga las notas que se encuentran alojadas en el directorio específico que se le asigna al usuario y que toma de nombre el id del usuario. Con ello en una variable fileContent se guarda el contenido del buffer que tiene esa nota que ahora será un fichero almacenado en ese directorio explicado con una ruta determinada en la raiz de la estructura. 
+
+Con el método **saveTodo** lo que se hace es crear un directorio para cada usuario, en caso de no existir, si existiese procedería a lo siguiente que es redireccionar las notas que se crean a él pero además dichas notas por defecto toman la extensión .txt y lo que se desea es que sean _.JSON_ y eso es lo que se implementa en dicho método.
+
+
+Finalizando así la clase **TodoCollection** con el manejo de las distintas notas y las operaciones con ella que puede hacer el usuario:
+
+![expect final todoitem](https://i.imgur.com/edLnDnf.jpg)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+### Fichero: userTodo.ts
+
+El objetivo de este fichero es el manejo de operaciones como añadir, modificar, eliminar, listar y leer las notas de los usuarios esto mediante el manejo de chalk, para mensajes informativos y yargs para el control de comandos por consola, para ello primero defino las dependencias que se necesitan y una declaración de variables que me serán de utilidad para poder trabajar.
+
+![dependencias](https://i.imgur.com/ZKdkYmn.jpg)
+
+Así pues la variable **todos** es un array vacío de la clase TodoItem que tiene las notas y **collection** es un objeto invocante de la clase TodoCollection.
+
+Luego voy a explicar cada comando determinado en yarg y el comando completo para invocarlo en mi programa, así como en algunos casos un ejemplo de qué se ejecuta.
+
+
+- Yarg: command "add"
+
+![yargadd](https://i.imgur.com/H5XP2jM.jpg)
+
+El comando yarg add contiene los siguientes argumentos que se pasan por consola que son: user, title, body y color en ese orden y la orden completa sería:
+
+> `tsc
+> node dist/userTodo.js add --user=1 --title="blueblue" --body=" some" --color="blue"`
+
+Y el código mostraría un mensaje informativo en verde como que se ha creado correctamente:
+
+![cod add](https://i.imgur.com/AnKmgdA.jpg)
+
+Y entonces veríamos que se creaun nuevo directorio denominado **1**:
+
+![dir user](https://i.imgur.com/o2g6Jc9.jpg)
+
+Y si entramos dentro del directorio se vería el fichero .json con las especificaciones de la nota:
+
+![file json](https://i.imgur.com/RtEbxYm.jpg)
+
+
+
+Y así puediendo almacenar varios ficheros y varios usuario como se ve a continuación:
+
+![codigo1](https://i.imgur.com/UK33pQP.jpg)
+
+![cod2](https://i.imgur.com/BbRHVtN.jpg)
+
+![cod 3](https://i.imgur.com/slBWBdY.jpg)
+
+
+Demostrando así el corrector funcionamiento del comando add.
+
+
+
+
+- Yarg: command "modify"
+
+El objetivo de este comando es modificar y comprobar con el **watchFile** de la librería fs que se ha modificado la nota viendo el tamaño anterior y el actual:
+
+![modify](https://i.imgur.com/9cTmX7o.jpg)
+
+El comando sería:
+
+> `tsc
+> node dist/userTodo.js modify --user=1 --title="blueblue" --body="some more" --color="blue"`
+
+Sería tan simple comoponer en el body el nuevo texto que quieres poner y él yarg modify te calcula el nuevo tamaño de la nota con respecto al anterior:
+
+![cod](https://i.imgur.com/XB43747.jpg)
+
+El problema es que no funciona del todo
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
 
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-**DESARROLLO DEL MÉTODO DENTRO DE LA CLASE GENÉRICA**
 
-![desarrollo de la funcion](https://i.imgur.com/QmoQr2e.jpg)
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-**DESARROLLO DEL METODO PRINT DE LA CLASE MAGNITUDETIME**
-
-![Desarrollo salida](https://i.imgur.com/9frPr5o.jpg)
-
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-**ACIERTO Y CONVERSIÓN DE TIEMPO**
-
-![acierto](https://i.imgur.com/5pXtTyi.jpg)
-
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Esos pasos los sigo con todas las clases asociadas a una medida, hago la documentación y al final conseguimos por un lado el informe de Typedoc : 
-- [Informe Typedoc](http://127.0.0.1:5500/docs/modules/ejercicio_2_isconvertible.html)
-
-Y por otro lado que todos los test funcionen: 
-
-![test aciertos](https://i.imgur.com/VZN0lJc.jpg)
-
-Y siendo el código final:
-
-![1](https://i.imgur.com/VQXenHc.jpg)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-![2](https://i.imgur.com/UkAoO10.jpg)
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-![3](https://i.imgur.com/0UzBQdW.jpg)
- 
- 
- 
-━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-**EJEMPLO DE METODO DE CONVERSION**
- 
- ![4](https://i.imgur.com/VzuP0o1.jpg)
- 
- 
- ━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- 
- ![5](https://i.imgur.com/zk8Ddbv.jpg)
- 
- 
- ━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- 
- 
- ![6](https://i.imgur.com/yQMqVNl.jpg)
- 
- ━━━━━━━━━━━━━━━━━━━━━━━━━━✧❂✧━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- 
- 
- Finalmente hice `npm run coverage` para el seguimiento con coveralls
  
 ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
 
