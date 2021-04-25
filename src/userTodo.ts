@@ -9,7 +9,11 @@ const chalk = require('chalk');
 let todos: TodoItem[] = [];
 let collection: TodoCollection = new TodoCollection("Adam", todos);
 
-
+/**
+ * Yargs.command = add
+ * Se añade las notas con un formato similar a:
+ * add --user="edusegre" --title="Red note" --body="This is a red note" --color="red"
+ */
 yargs.command({
   command: 'add',
   describe: 'Add a new note',
@@ -39,7 +43,7 @@ yargs.command({
     if (typeof argv.user === 'number' && typeof argv.title === 'string' && typeof argv.body === 'string' && typeof argv.color === 'string') {
       console.clear();
       console.log(`${argv.user}'s Todo List: added task`);
-
+      //Se llamaría a dichos métodos para añadir la nota al gual que se crea el directorio del usuario si no existe
       let userNotes = collection.loadTodo(argv.user);
       let color = collection.getTodoColor(argv.color);
       if (color) {
@@ -48,13 +52,16 @@ yargs.command({
       } else {
         console.log('Invalid color');
         console.log('Admited colors: Red, Blue, Green, Yellow, Black');
-      }
-        
+      } 
     }
   },
 });
 
-
+/**
+ * Yargs.command = modify
+ * Se modifican las notas con un formato similar a:
+ * modify --user="edusegre" --title="Red note" --body="This is a red note" --color="red"
+ */
 yargs.command({
   command: 'modify',
   describe: 'Modify an exist note',
@@ -85,6 +92,7 @@ yargs.command({
       console.clear();
       console.log(`${argv.user}'s Todo List: modified task`);
       watchFile('BuyFlowers.txt', (curr, prev) => {
+        //Mensajes informativos si se cambió la nota con el tamaño que tenia antes y el que tiene tras modificar
         console.log(chalk.green(`File size was ${prev.size} bytes before it was modified`));
         console.log(chalk.green(`Now file size is ${curr.size} bytes`));
       });
@@ -92,7 +100,11 @@ yargs.command({
   },
 });
 
-
+/**
+ * Yargs.command = remove
+ * Se eliminan las notas con un formato similar a:
+ * remove --user="edusegre" --title="Red note"
+ */
 yargs.command({
   command: 'remove',
   describe: 'Remove a complete note',
@@ -117,7 +129,11 @@ yargs.command({
   },
 });
 
-
+/**
+ * Yargs.command = list
+ * Se mustran todas las notas con un formato similar a:
+ * list --user="edusegre"
+ */
 yargs.command({
   command: 'list',
   describe: 'List notes',
@@ -143,6 +159,11 @@ yargs.command({
   },
 });
 
+/**
+ * Yargs.command = read
+ * Se lee la nota específica con un formato similar a:
+ * read --user="edusegre" --title="Red note"
+ */
 yargs.command({
   command: 'read',
   describe: 'Read an existing note',
